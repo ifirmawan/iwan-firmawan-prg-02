@@ -1,0 +1,39 @@
+.dotFirst{
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+  background-color: #bbb;
+}
+
+.dotSecond{
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+  background-color: #bbb;
+}
+
+.dotThird{
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+  background-color: #bbb;
+}
+
+.dotFourth{
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+  background-color: rgb(239, 93, 40);
+}
+
+.dotFiveth{
+  height: 25px;
+  width: 25px;
+  border-radius: 50%;
+  display: inline-block;
+  background-color: #bbb;
+}

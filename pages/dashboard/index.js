@@ -1,34 +1,84 @@
-//import { useState } from 'react'
+import useSwr from 'swr'
+import moment from 'moment'
 import { LineChart, PieChart } from '../../components/charts'
+import { Row, Col, Card, CardBody, Table } from 'reactstrap'
+import LayoutDashboard from '../../components/layout-dashboard'
+
+const fetcher = (url) => fetch(url).then((res) => res.json())
+
 const DashboardPage = ({ pid }) => {
-  //const [reports, setReports] = useState([])
-  const exampleLine = [
-    { x: 0, y: 8 },
-    { x: 1, y: 5 },
-    { x: 2, y: 4 },
-    { x: 3, y: 9 },
-    { x: 4, y: 1 },
-    { x: 5, y: 7 },
-    { x: 6, y: 6 },
-    { x: 7, y: 3 },
-    { x: 8, y: 2 },
-    { x: 9, y: 0 }
-  ]
-  const reports = []
+  const { data, error } = useSwr('/api/example', fetcher)
+  if (error) return <div>Failed to load reports</div>
+  if (!data) return <div>Loading...</div>
+  const { data: source } = data || {}
+  console.log(pid)
   return (
     <>
-      <h1>Dashboard {pid}</h1>
-      <LineChart source={exampleLine} />
-      <PieChart source={reports} />
+      <LayoutDashboard title='Dashboard | PT Nindya Karya (Persero)'>
+
+        <Row className='mt-5 mb-2'>
+          <Col>
+            <h3>Produksi Wilayah/Minggu Tahun {moment().format('YYYY')}</h3>
+          </Col>
+        </Row>
+        <Row className='mb-3'>
+          <Col>
+            <Card style={{ borderBottom: '5px solid #10613c' }}>
+              <CardBody>
+                <LineChart />
+              </CardBody>
+            </Card>
+          </Col>
+        </Row>
+        <Row>
+          <Col md='9'>
+            <Row className='mt-5 mb-2'>
+              <Col>
+                <h3>Rata-rata Produksi/Minggu Tahun {moment().format('YYYY')}</h3>
+              </Col>
+            </Row>
+            <Table striped>
+              <thead>
+                <tr>
+                  <th>Tanggal Produksi</th>
+                  <th>Rata-rata Produksi</th>
+                </tr>
+              </thead>
+              <tbody>
+                <tr>
+                  <td>20/Okt/2020</td>
+                  <td>20.000</td>
+                </tr>
+                <tr>
+                  <td>21/Okt/2020</td>
+                  <td>90.000</td>
+                </tr>
+                <tr>
+                  <td>22/Okt/2020</td>
+                  <td>250.000</td>
+                </tr>
+              </tbody>
+            </Table>
+          </Col>
+          <Col md='3'>
+            {source && (
+              <>
+                <PieChart source={source} />
+              </>
+            )}
+          </Col>
+        </Row>
+      </LayoutDashboard>
     </>
   )
 }
+
 DashboardPage.getInitialProps = (req) => {
-  const { query } = req
-  const { id: pid } = query || {}
-  console.log(query)
+  const { id: pid } = req || {}
   return {
-    pid: pid
+    props: {
+      pid
+    },
   }
 }
 export default DashboardPage

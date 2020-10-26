@@ -1,32 +1,37 @@
-const reportProductions = [
+const data = [
   {
     id: 1,
-    date: '20/10/2020',
-    area: '1',
+    date: '20/Okt/2020',
+    dateNumber: 20,
+    area: 'I',
     amount: 100000
   },
   {
     id: 2,
-    date: '21/10/2020',
-    area: '2',
+    date: '21/Okt/2020',
+    dateNumber: 21,
+    area: 'II',
     amount: 150000
   },
   {
     id: 3,
-    date: '22/10/2020',
-    area: '3',
+    date: '22/Okt/2020',
+    dateNumber: 22,
+    area: 'III',
     amount: 200000
   },
   {
     id: 4,
-    date: '21/10/2020',
-    area: '4',
+    date: '21/Okt/2020',
+    dateNumber: 21,
+    area: 'IV',
     amount: 300000
   },
   {
     id: 5,
-    date: '22/10/2020',
-    area: '5',
+    date: '22/Okt/2020',
+    dateNumber: 22,
+    area: 'V',
     amount: 300000
   }
 ]
@@ -39,7 +44,10 @@ const reportProductions = [
 
 export default function handler(req, res) {
   const { method } = req
-  if (method) {
-
+  switch (method) {
+    case 'POST':
+    case 'GET':
+      res.status(200).json({ data })
+      break
   }
 }
