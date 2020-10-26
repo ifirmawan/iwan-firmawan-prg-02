@@ -1,12 +1,12 @@
 const users = [
   {
     id: 111,
-    email: 'admin@mail.com',
-    password: 'Open1234'
+    email: 'admin@nindya.co.id',
+    password: 'Nindya123'
   },
   {
     id: 222,
-    email: 'hellofirmawan@gmail.com',
+    email: 'iwan@nindya.co.id',
     password: 'Secret123'
   },
 ]
