@@ -75,19 +75,6 @@ export default function Home() {
                   </div>
                 </div>
               </Form>
-              <Row className='mt-5'>
-                <Col>
-                  <Card color='warning'>
-                    <CardBody>
-                      <strong>Akun Demo</strong>
-                      <p>
-                        E-mail: admin@mail.com <br />
-                        Password: Open1234
-                      </p>
-                    </CardBody>
-                  </Card>
-                </Col>
-              </Row>
             </div>
           </div>
         </div>
